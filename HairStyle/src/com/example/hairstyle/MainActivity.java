@@ -2,16 +2,29 @@ package com.example.hairstyle;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
 
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
 
 public class MainActivity extends Activity {
-
+	
+	private static final String TAG = MainActivity.class.getSimpleName();
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Parse.initialize(this, "3lThhxtk9VqqxSBeRJaZBN1AxdO2bA7u5b8lCBlQ", "VbJDWibi5M3zEKKlP7OxHhJYjU9uhPKeMwP4k8on");
+      
     }
 
 
@@ -32,5 +45,26 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void submitTicketCard(View v) {
+    	//hello
+    	int count = 0;
+    	
+    	GridLayout grid = (GridLayout)findViewById(R.id.GridLayout1);
+    	int childcount = grid.getChildCount();
+    	for (int i=0; i < childcount; i++){
+    	      View view2 = grid.getChildAt(i);
+    	      if (view2 instanceof CheckBox) {
+    	           count++;
+    	      }
+    	}
+    	Log.d(TAG, "Count = "+count);
+    	
+    	System.out.println(count);
+    	
+    	  ParseObject ticketObject = new ParseObject("TicketObject");
+    	  ticketObject.put("Number of Pierces", "bar");
+    	  ticketObject.saveInBackground();
     }
 }

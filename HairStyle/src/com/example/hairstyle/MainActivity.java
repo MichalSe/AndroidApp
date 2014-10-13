@@ -8,25 +8,38 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
+import android.widget.*;
 
 public class MainActivity extends Activity {
 	
 	private static final String TAG = MainActivity.class.getSimpleName();
-	
+	 
+	  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Parse.initialize(this, "3lThhxtk9VqqxSBeRJaZBN1AxdO2bA7u5b8lCBlQ", "VbJDWibi5M3zEKKlP7OxHhJYjU9uhPKeMwP4k8on");
-      
-    }
+        CheckBox repeatChkBx = ( CheckBox ) findViewById( R.id.checkBox1 );
+        repeatChkBx.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                if ( isChecked )
+                {
+                	buttonView.setEnabled(false); // disable checkbox 
+                }
 
+            }
+        });   
+    }
+   
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -47,8 +60,9 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+   
     public void submitTicketCard(View v) {
-    	//hello
+    	
     	int count = 0;
     	
     	GridLayout grid = (GridLayout)findViewById(R.id.GridLayout1);
@@ -56,7 +70,10 @@ public class MainActivity extends Activity {
     	for (int i=0; i < childcount; i++){
     	      View view2 = grid.getChildAt(i);
     	      if (view2 instanceof CheckBox) {
-    	           count++;
+    	    	  CheckBox marked = (CheckBox) view2;
+    	    	  if (marked.isChecked()){
+    	    		  count++;
+    	    	  }  
     	      }
     	}
     	Log.d(TAG, "Count = "+count);

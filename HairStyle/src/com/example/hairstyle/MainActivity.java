@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
         repeatChkBx.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
             {
-                if ( isChecked )
+                if (isChecked)
                 {
                 	buttonView.setEnabled(false); // disable checkbox 
                 }

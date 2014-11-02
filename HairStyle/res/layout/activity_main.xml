@@ -33,62 +33,72 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="25dp"
-            android:gravity="center" />
+            android:gravity="center" 
+        	android:onClick="onCheckBoxClicked" />
 
         <CheckBox
             android:id="@+id/checkBox2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="25dp" />
-
+            android:layout_margin="25dp" 
+			android:onClick="onCheckBoxClicked" />
+        
         <CheckBox
             android:id="@+id/checkBox3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_margin="25dp" />
+            android:layout_margin="25dp" 
+			android:onClick="onCheckBoxClicked" />
 
         <CheckBox
             android:id="@+id/checkBox4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_margin="25dp" />
-
+            android:layout_margin="25dp" 
+			android:onClick="onCheckBoxClicked" />
+        
         <CheckBox
             android:id="@+id/checkBox5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_margin="25dp" />
+            android:layout_margin="25dp" 
+            android:onClick="onCheckBoxClicked" />
 
         <CheckBox
             android:id="@+id/checkBox6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_margin="25dp" />
-
+            android:layout_margin="25dp" 
+			android:onClick="onCheckBoxClicked" />
+        
         <CheckBox
             android:id="@+id/checkBox7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_margin="25dp" />
+            android:layout_margin="25dp" 
+            android:onClick="onCheckBoxClicked" />
 
         <CheckBox
             android:id="@+id/checkBox8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_margin="25dp" />
+            android:layout_margin="25dp" 
+            android:onClick="onCheckBoxClicked" />
 
         <CheckBox
             android:id="@+id/checkBox9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_margin="25dp" />
+            android:layout_margin="25dp" 
+            android:onClick="onCheckBoxClicked" />
+        
     </GridLayout>
 
     <Button

@@ -6,14 +6,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.GridLayout;
-import android.widget.LinearLayout;
-
 import com.parse.Parse;
-import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
 import android.widget.*;
 

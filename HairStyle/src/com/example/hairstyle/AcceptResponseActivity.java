@@ -24,6 +24,10 @@ private static final String TAG = AcceptResponseActivity.class.getSimpleName();
     public void acceptHaircut(View v) {
     	//TODO send eden
     	System.out.println("send to eden");
+    	ParseObject ticketObject = new ParseObject("TicketObject");
+    	//TODO count from push
+		ticketObject.put("numOfPierces", 1);
+		ticketObject.saveInBackground();
     }
 }
 

@@ -7,4 +7,6 @@
     <string name="main_page_t">Welcome!</string>
 	<string name="submit_btn">Submit</string>
 	<string name="user_request">Eden wants to get a haircut!</string>
+	<string name="req_success">the hair dresser approve your request:)</string>
+	
 </resources>

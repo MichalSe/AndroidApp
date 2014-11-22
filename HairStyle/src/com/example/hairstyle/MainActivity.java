@@ -1,5 +1,7 @@
 package com.example.hairstyle;
 
+
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,7 +11,12 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
+
 import com.parse.*;
+
+import android.widget.*;
+
 public class MainActivity extends Activity {
 
 	private static final String TAG = MainActivity.class.getSimpleName();
@@ -59,8 +66,11 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		ProgressBar pb = (ProgressBar)findViewById(R.id.progressBar1);
+		pb.setVisibility(-1);
 		Parse.initialize(this, "3lThhxtk9VqqxSBeRJaZBN1AxdO2bA7u5b8lCBlQ",
 				"VbJDWibi5M3zEKKlP7OxHhJYjU9uhPKeMwP4k8on");
+		loadTicketCard(getCurrentFocus());
 	}
 
 	public void onCheckBoxClicked(View view) {
@@ -98,7 +108,30 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	public void loadTicketCard(View v){
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("TicketObject");
+		query.getInBackground("gIPq7MH7rK", new GetCallback<ParseObject>() {
+		  public void done(ParseObject object, ParseException e) {
+		    if (e == null) {
+		    	int numOfCurrentPirces=object.getInt("numOfPierces");
+		    	GridLayout grid = (GridLayout) findViewById(R.id.GridLayout1);
+				for (int i = 0; i < numOfCurrentPirces; i++) {
+					View view2 = grid.getChildAt(i);
+					if (view2 instanceof CheckBox) {
+						CheckBox marked = (CheckBox) view2;
+						marked.setChecked(true);
+						marked.setEnabled(false);
+						}
+				}
+		    } else {
+		      // something went wrong
+		    }
+		  }
+		});
+	}
 
+	
 	public void submitTicketCard(View v) {
 
 		int count = 0;
@@ -115,11 +148,14 @@ public class MainActivity extends Activity {
 			}
 		}
 		Log.d(TAG, "Count = " + count);
-
-		System.out.println(count);
-
+		Button submitBut = (Button)findViewById(R.id.button1);
+		submitBut.setEnabled(false);
+		ProgressBar pb = (ProgressBar)findViewById(R.id.progressBar1);
+		pb.setVisibility(1);
 		ParseObject ticketObject = new ParseObject("TicketObject");
-		ticketObject.put("Number of Pierces", "bar");
+		ticketObject.put("numOfPierces", count);
 		ticketObject.saveInBackground();
 	}
+	
+	
 }

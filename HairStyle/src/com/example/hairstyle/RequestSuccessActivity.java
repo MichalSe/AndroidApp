@@ -3,14 +3,12 @@ package com.example.hairstyle;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class SubmissionSuccessActivity extends Activity{
+public class RequestSuccessActivity extends Activity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		setContentView(R.layout.request_success_activity);
 		super.onCreate(savedInstanceState);
-		
-		
 	}
 
 	@Override
